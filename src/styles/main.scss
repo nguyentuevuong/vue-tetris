@@ -1,0 +1,105 @@
+* {
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#app {
+    display: inline-block;
+    box-shadow: 0 0 10px #fff inset;
+    background-color: #efcc19;
+    border-radius: 20px;
+    padding: 20px;
+
+    .react {
+        width: 510px;
+        padding: 45px 45px 35px 45px;
+        border-color: #000;
+        border-style: solid;
+        position: relative;
+        border-width: 0 10px 10px 10px;
+
+        .top-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            &::after {
+                clear: both;
+            }
+
+            .left,
+            .right {
+                width: 90px;
+                .dot {
+                    width: 10px;
+                    height: 10px;
+                    background-color: #000;
+                    float: left;
+                    &:not(:last-child) {
+                        margin-right: 10px;
+                    }
+                }
+            }
+
+            .left {
+                float: left;
+            }
+
+            .right {
+                float: right;
+            }
+        }
+
+        .screen {
+            width: 400px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #987f0f #fae36c #fae36c #987f0f;
+
+            .panel {
+                width: 100%;
+                padding: 8px;
+                background-color: #9ead86;
+                border: 2px solid #494536;
+
+                .matrix {
+                    padding: 4px;
+                    border: 2px solid #000;
+                    width: 232px;
+
+                    .row {
+                        box-sizing: border-box;
+                        &::after {
+                            content: "";
+                            clear: both;
+                            display: block;
+                        }
+
+                        .cell {
+                            float: left;
+                            margin: 1px;
+                            padding: 1px;
+                            width: 20px;
+                            height: 20px;
+                            border: 2px solid #879372;
+                            &::after {
+                                content: "";
+                                display: block;
+                                width: 14px;
+                                height: 14px;
+                                background-color: #879372;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
