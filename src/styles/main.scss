@@ -9,12 +9,24 @@ body {
     overflow: hidden;
 }
 
-#app {
+.app {
+    position: relative;
     display: inline-block;
     box-shadow: 0 0 10px #fff inset;
     background-color: #efcc19;
     border-radius: 20px;
     padding: 20px;
+
+    .title {
+        top: 8px;
+        left: 20px;
+        right: 20px;
+        font-size: 2rem;
+        text-transform: uppercase;
+        text-align: center;
+        position: absolute;
+        font-family: monospace;
+    }
 
     .react {
         width: 510px;

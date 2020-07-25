@@ -1,12 +1,14 @@
 import { Vue, Component } from '@/cores/providers';
 
+import TReact from '../components/react/index.vue';
+
 import { TMatrix } from '../components';
 
 @Component({
-    components: { TMatrix }
+    components: { TReact, TMatrix }
 })
 export default class TetrisAppViewModel extends Vue {
-    transform = 'none';
+    transform: string = 'none';
 
     mounted() {
         /* const vm = this;

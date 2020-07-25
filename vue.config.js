@@ -7,5 +7,12 @@ module.exports = () => ({
 
         // lazy load
         config.plugins.delete('prefetch').end();
+    },
+    configureWebpack: {
+        resolve: {
+            alias: {
+                "vue$": 'vue/dist/vue.common.js'
+            }
+        }
     }
 });
