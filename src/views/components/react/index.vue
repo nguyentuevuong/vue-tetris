@@ -3,7 +3,14 @@
     <t-border v-bind:types="classNames"></t-border>
     <div class="screen">
       <div class="panel">
-        <t-matrix></t-matrix>
+        <t-matrix class="matrix" :matrix="$store.matrix"></t-matrix>
+        <div class="info">
+          <t-digit :score="0"></t-digit>
+          <t-digit :level="1"></t-digit>
+          <t-digit :speed="1"></t-digit>
+          <t-block></t-block>
+          <t-state></t-state>
+        </div>
       </div>
     </div>
   </div>

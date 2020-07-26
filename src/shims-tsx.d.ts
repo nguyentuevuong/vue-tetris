@@ -1,4 +1,4 @@
-import Vue, { VNode } from 'vue'
+import Vue, { VNode } from 'vue';
 
 declare global {
   namespace JSX {
@@ -11,14 +11,26 @@ declare global {
     }
   }
 
-  interface DataStore{
-    time: Date;
+  enum CELL_STATE {
+    hide = -1,
+    inactive = 0,
+    active = 1
+  }
+
+  type PIECE = CELL_STATE[][];
+
+  interface DataStore {
+    date: Date;
     name: string;
+    next: PIECE;
+    matrix: PIECE;
+    mute: boolean;
+    pause: boolean;
   }
 }
 
 declare module 'vue/types/vue' {
   interface Vue {
-    readonly $store: Storage;
+    readonly $store: DataStore;
   }
 }

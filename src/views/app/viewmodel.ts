@@ -1,23 +1,29 @@
 import { Vue, Component } from '@/cores/providers';
 
-import TReact from '../components/react/index.vue';
+import { mobile } from '@/cores/util';
 
-import { TMatrix } from '../components';
+import TReact from '../components/react/index.vue';
+import TControl from '../components/control/index.vue';
 
 @Component({
-    components: { TReact, TMatrix }
+    components: { TReact, TControl }
 })
 export default class TetrisAppViewModel extends Vue {
+    mobile: boolean = false;
     transform: string = 'none';
 
     mounted() {
-        /* const vm = this;
-        const app = vm.$el;
+        const vm = this;
+        // const app = vm.$el;
 
-        vm.$nextTick(() => {
+        vm.mobile = mobile();
+
+        /*vm.$nextTick(() => {
             if (app && window.innerHeight < app.clientHeight) {
                 vm.transform = `scale(${window.innerHeight / app.clientHeight})`;
             }
-        }); */
+        });*/
+
+        Object.assign(window, { vm });
     }
 }

@@ -3,25 +3,35 @@
     box-sizing: border-box;
 }
 
+:root {
+    --cell-size: 10px;
+}
+
 body {
     margin: 0;
-    padding: 0;
     overflow: hidden;
+    font-family: monospace;
 }
 
 .app {
     position: relative;
     display: inline-block;
     box-shadow: 0 0 10px #fff inset;
-    background-color: #efcc19;
+    background-color: #9877ef;
     border-radius: 20px;
     padding: 20px;
+
+    &.mobile {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
 
     .title {
         top: 8px;
         left: 20px;
         right: 20px;
-        font-size: 2rem;
+        font-size: 20px;
         text-transform: uppercase;
         text-align: center;
         position: absolute;
@@ -29,33 +39,33 @@ body {
     }
 
     .react {
-        width: 510px;
-        padding: 45px 45px 35px 45px;
+        padding: 20px;
+        padding-top: 25px;
         border-color: #000;
         border-style: solid;
         position: relative;
-        border-width: 0 10px 10px 10px;
+        border-width: 0 5px 5px 5px;
 
         .top-border {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 10px;
+            height: 5px;
             &::after {
                 clear: both;
             }
 
             .left,
             .right {
-                width: 90px;
+                width: calc(5px * 9);
                 .dot {
-                    width: 10px;
-                    height: 10px;
+                    width: 5px;
+                    height: 5px;
                     background-color: #000;
                     float: left;
                     &:not(:last-child) {
-                        margin-right: 10px;
+                        margin-right: 5px;
                     }
                 }
             }
@@ -70,22 +80,67 @@ body {
         }
 
         .screen {
-            width: 400px;
             border-width: 5px;
             border-style: solid;
-            border-color: #987f0f #fae36c #fae36c #987f0f;
+            border-color: #805fda #baa3fb #bfa7ff #a686ff;
 
             .panel {
-                width: 100%;
                 padding: 8px;
                 background-color: #9ead86;
                 border: 2px solid #494536;
+                position: relative;
 
+                &::after {
+                    content: "";
+                    clear: both;
+                }
+
+                .info {
+                    float: right;
+                    padding-left: 8px;
+                    position: relative;
+                    display: block;
+
+                    .digit {
+                        padding-bottom: 10px;
+                        font-family: monospace;
+
+                        &::after {
+                            content: "";
+                            clear: both;
+                        }
+
+                        .text {
+                            text-align: left;
+                            font-size: 1rem;
+                            font-variant: small-caps;
+                        }
+
+                        .block {
+                            float: right;
+                        }
+
+                        .digital {
+                            margin-left: 10px;
+                            text-align: right;
+                            font-size: 1.2rem;
+
+                            .active {
+                                color: #000;
+                            }
+
+                            .inactive {
+                                color: #879372;
+                            }
+                        }
+                    }
+                }
+
+                .block,
                 .matrix {
                     padding: 4px;
                     border: 2px solid #000;
-                    width: 232px;
-
+                    float: left;
                     .row {
                         box-sizing: border-box;
                         &::after {
@@ -96,22 +151,269 @@ body {
 
                         .cell {
                             float: left;
-                            margin: 1px;
+                            margin-right: 1px;
+                            margin-bottom: 1px;
                             padding: 1px;
-                            width: 20px;
-                            height: 20px;
-                            border: 2px solid #879372;
+                            border: 1px solid #879372;
                             &::after {
                                 content: "";
                                 display: block;
-                                width: 14px;
-                                height: 14px;
+                                width: var(--cell-size);
+                                min-width: 5px;
+                                max-width: 14px;
+                                height: var(--cell-size);
+                                min-height: 5px;
+                                max-height: 14px;
                                 background-color: #879372;
+                            }
+                            &:last-child {
+                                margin-right: 0;
+                            }
+
+                            &.c- {
+                                &-1 {
+                                    border-color: transparent;
+                                    &::after {
+                                        background-color: transparent;
+                                    }
+                                }
+                                &0 {
+                                    border: 1px solid #879372;
+                                    &::after {
+                                        background-color: #879372;
+                                    }
+                                }
+                                &1 {
+                                    border: 1px solid #000;
+                                    &::after {
+                                        background-color: #000;
+                                    }
+                                }
+                            }
+                        }
+
+                        &:last-child {
+                            .cell {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+
+                .block {
+                    padding: 0;
+                    padding-top: 6px;
+                    border: 0;
+                    .text {
+                        text-align: left;
+                        font-size: 1rem;
+                        font-variant: small-caps;
+                    }
+                }
+
+                .state {
+                    .speaker {
+                        display: inline-block;
+                        vertical-align: middle;
+                        box-sizing: border-box;
+                        width: 13px;
+                        height: 16px;
+                        overflow: unset;
+                        margin-left: -5px;
+                        position: relative;
+                        background-clip: content-box;
+                        border: 3px solid transparent;
+
+                        &.on {
+                            background-color: #000;
+                            border-right-color: #000;
+                        }
+
+                        &.off {
+                            background-color: #879372;
+                            border-right-color: #879372;
+                        }
+                    }
+
+                    .pause {
+                        width: 10px;
+                        height: 12px;
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin-left: 6px;
+                        border-left: 4px solid #879372;
+                        border-right: 4px solid #879372;
+
+                        &.active {
+                            border-color: #000;
+                        }
+
+                        &.inactive {
+                            border-color: #879372;
+                        }
+                    }
+
+                    .time {
+                        display: inline-block;
+                        line-height: 16px;
+                        vertical-align: middle;
+                        padding-left: 5px;
+
+                        .minute,
+                        .dot,
+                        .secon {
+                            font-family: monospace;
+                            font-size: 16px;
+                        }
+
+                        .dot {
+                            &.inactive {
+                                color: transparent;
                             }
                         }
                     }
                 }
             }
+        }
+    }
+
+    .control {
+        margin-top: 10px;
+        &::after {
+            content: "";
+            clear: both;
+        }
+
+        .pad,
+        .joystick {
+            float: left;
+        }
+
+        .pad {
+            width: calc(100% - 155px);
+            .option {
+                padding-bottom: 20px;
+                &::after {
+                    content: "";
+                    clear: both;
+                }
+                .button {
+                    float: left;
+                    width: 33.3333%;
+                    text-align: center;
+                }
+            }
+            .accept {
+                text-align: center;
+            }
+        }
+
+        .joystick {
+            width: 155px;
+            height: 155px;
+            position: relative;
+            .button {
+                position: absolute;
+
+                &.left {
+                    left: 0;
+                    top: calc(50% - 30px);
+                }
+
+                &.up {
+                    top: 0;
+                    left: calc(50% - 30px);
+                }
+
+                &.right {
+                    right: 0;
+                    top: calc(50% - 30px);
+                }
+
+                &.down {
+                    left: calc(50% - 30px);
+                    bottom: 0;
+                }
+            }
+        }
+    }
+
+    .button {
+        button {
+            width: 60px;
+            height: 60px;
+            font-size: 1rem;
+            & + div {
+                margin-top: 3px;
+            }
+        }
+
+        &.small {
+            font-size: 0.5rem;
+            button {
+                width: 25px;
+                height: 25px;
+                font-size: 0.7rem;
+            }
+        }
+
+        &.large {
+            font-size: 0.7rem;
+            button {
+                width: 100px;
+                height: 100px;
+                font-size: 2rem;
+            }
+        }
+
+        &.reset {
+            button {
+                background-color: #dd1a1a;
+            }
+        }
+
+        &.pause,
+        &.sound {
+            button {
+                background-color: #2dc421;
+            }
+        }
+    }
+
+    button {
+        cursor: pointer;
+        outline: none;
+        position: relative;
+        background-color: #efcc19;
+        border: 1px solid #000;
+        border-radius: 50%;
+
+        &:active {
+            &::after {
+                box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.6);
+            }
+        }
+
+        &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+        }
+
+        &::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
         }
     }
 }

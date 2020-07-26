@@ -1,4 +1,4 @@
-import { Vue, Component } from '@/cores/providers';
+import { Vue, Prop, Component } from '@/cores/providers';
 
 import TCell from '../cell/index.vue';
 
@@ -6,22 +6,6 @@ import TCell from '../cell/index.vue';
     components: { TCell }
 })
 export default class MatrixViewModel extends Vue {
-    data: number[][] = [];
-
-    created() {
-        const vm = this;
-        const data: number[][] = [];
-
-        for (let r = 0; r < 20; r++) {
-            const row: number[] = [];
-
-            for (let i = 0; i < 10; i++) {
-                row.push(i);
-            }
-
-            data.push(row);
-        }
-
-        vm.data = data;
-    }
+    @Prop({ default: () => [] })
+    public readonly matrix!: CELL_STATE[][];
 }

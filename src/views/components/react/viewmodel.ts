@@ -1,8 +1,14 @@
 import { Vue, Component } from '@/cores/providers';
 import TMatrix from '../matrix/index.vue';
+import TBlock from '../block/index.vue';
+import TDigit from '../digit/index.vue';
+import TState from '../state/index.vue';
 
 @Component({
     components: {
+        TState,
+        TDigit,
+        TBlock,
         TMatrix,
         TBorder: {
             props: ['types'],
