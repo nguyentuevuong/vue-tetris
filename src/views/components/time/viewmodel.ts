@@ -10,13 +10,13 @@ export default class TimeViewModel extends Vue {
     public get minute() {
         const vm = this;
 
-        return '00';
+        return vm.$store.date.getHours();
     }
 
     public get secon() {
         const vm = this;
 
-        return '00';
+        return  vm.$store.date.getMinutes();
     }
 
     @Watch('$store.date')

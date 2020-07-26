@@ -17,15 +17,32 @@ declare global {
     active = 1
   }
 
+  enum GAME_STATE {
+    LOADING,
+    PAUSED,
+    STARTED,
+    OVER
+  }
+
   type PIECE = CELL_STATE[][];
 
   interface DataStore {
     date: Date;
     name: string;
     next: PIECE;
-    matrix: PIECE;
+    matrix: MatrixCell;
     mute: boolean;
     pause: boolean;
+  }
+
+  interface MatrixCell {
+    readonly cells: PIECE;
+
+    readonly display: PIECE;
+
+    readonly reset: {
+      (): void;
+    };
   }
 }
 

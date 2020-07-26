@@ -4,7 +4,7 @@
       <div class="option">
         <t-button class="small pause" text="Pause(P)" v-on:click="pause"></t-button>
         <t-button class="small sound" text="Sound(S)" v-on:click="mute"></t-button>
-        <t-button class="small reset" text="Reset(R)"></t-button>
+        <t-button class="small reset" text="Reset(R)" v-on:click="reset"></t-button>
       </div>
       <div class="accept">
         <t-button class="large" text="Drop(SPACE)" v-on:click="drop"></t-button>

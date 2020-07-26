@@ -1,11 +1,12 @@
 import { Vue } from '@/cores/providers';
+import { Matrix } from './tetris/matrix';
 
 class Storage implements DataStore {
     date: Date = new Date();
     name: string = 'Vue Brick Game';
-    matrix: PIECE = [];
+    matrix: MatrixCell = new Matrix();
     next: PIECE = [];
-    
+
     time: number = 0;
     mute: boolean = true;
     pause: boolean = false;
@@ -13,19 +14,6 @@ class Storage implements DataStore {
     constructor() {
         const store = this;
         const next: PIECE = [];
-        const matrix: PIECE = [];
-
-        for (let r = 0; r < 20; r++) {
-            const row: CELL_STATE[] = [];
-
-            for (let i = 0; i < 12; i++) {
-                row.push(0);
-            }
-
-            matrix.push(row);
-        }
-
-        store.matrix = matrix;
 
         for (let r = 0; r < 2; r++) {
             const row: number[] = [];

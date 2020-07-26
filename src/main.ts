@@ -1,6 +1,6 @@
 import { Vue } from '@/cores/providers';
 
-import '@/cores/tetris/store';
+import '@/cores/store';
 
 import MainApp from '@/views/app/index.vue';
 

@@ -56,4 +56,10 @@ export default class ControlPaddViewModel extends Vue {
 
         $store.pause = !$store.pause;
     }
+
+    public reset() {
+        const vm = this;
+
+        vm.$store.matrix.reset();
+    }
 }
